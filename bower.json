@@ -1,0 +1,26 @@
+{
+  "name": "parse-server-example",
+  "description": "An example Parse API server using the parse-server module",
+  "main": "index.js",
+  "authors": [
+    "Iman Khaghani Far <iman.khaghani@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/imana97/gstrap-parse-example",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "gstrap": "*",
+    "parse": "^1.9.2",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1",
+    "mustache.js": "mustache#^2.3.0"
+  }
+}

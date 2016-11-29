@@ -10,17 +10,129 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-h21C2fcDk/eFsW9sC9h0dhokq5pDinLNklTKoxIZRUn3+hvmgQSffLLQ4G4l2eEr" crossorigin="anonymous">
 
-    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="public/bower_components/jquery/dist/jquery.min.js"></script>
 
-    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="public/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="bower_components/gstrap/ejs.min.js"></script>
+    <script type="text/javascript" src="public/bower_components/gstrap/ejs.min.js"></script>
 
-    <script type="text/javascript" src="bower_components/mustache.js/mustache.min.js"></script>
+    <script type="text/javascript" src="public/bower_components/mustache.js/mustache.min.js"></script>
 
+    <script type="text/javascript" src="public/bower_components/parse/parse.min.js"></script>
+    <script type="text/javascript">
+        Parse.initialize("123456");
+        //Parse.serverURL = 'https://deephealthlab.org/api/';
+        Parse.serverURL = location.origin + '/parse/';
+    </script>
+
+    <!-- include gstrap framework -->
+    <script type="text/javascript" src="public/bower_components/gstrap/gstrap.min.js"></script>
 
 </head>
-<body>
+
+
+<body style="margin-top:64px; margin-bottom: 64px;">
+
+<script type="text/javascript">
+
+    new Gstrap.App({
+        compile: false, // under construction, set it to false.
+        name: "Gstrap Demo",
+        version: 0.01,
+        description: "Gstrap demo application using parse server.",
+
+        //modules goes here
+        modules: [
+            {
+                "name": "default",
+                "type": "module",
+                "path": "public/modules/default/default.js"
+            },
+            {
+                "name": "navbar",
+                "type": "module",
+                "path": "public/modules/navbar/navbar.js"
+            },
+            {
+                "name": "signup",
+                "type": "module",
+                "path": "public/modules/signup/signup.js"
+            },
+            {
+                "name": "todo",
+                "type": "module",
+                "path": "public/modules/todo/todo.js"
+            },
+            {
+                "name": "logout",
+                "type": "module",
+                "path": "public/modules/logout/logout.js"
+            }
+        ],
+
+        beforeLoad: function ($g, next) {
+
+            /**
+             * authentication values
+             * @type {{}}
+             */
+            $g.auth = {};
+            $g.auth.user = Parse.User.current();
+            if ($g.auth.user) {
+                $g.auth.access = Parse.User.current().get('access') || 'USER';
+            } else {
+                $g.auth.access = 'PUBLIC';
+            }
+
+
+            /**
+             * Global ajax setup
+             */
+            $(document).ajaxStart(function () {
+                $('#main-preloader').fadeIn();
+            });
+
+            $(document).ajaxStop(function () {
+                $('#main-preloader').fadeOut('fast');
+            });
+
+
+            /**
+             * debug
+             * let you access the gstrap object form the browser console.
+             */
+            gDebug = $g;
+
+
+            // load the app
+            next();
+        },
+        load: function ($g) {
+            // add the static modules. does not change on route change
+            $g.appendStatic($g.modules.navbar({
+                appName: $g.getAppName(),
+                appVersion: $g.getAppVersion(),
+                navBarType: "navbar-inverse",
+                navigation: [
+                    {
+                        name: "Home",
+                        link: "#!/",
+                        access: ['PUBLIC', 'USER'] // allow public and users to see this menu item.
+                    },
+                    {
+                        name: "Todo",
+                        link: "#!/todo/",
+                        access: ['USER'] // only allow users to see this menu item.
+                    }
+                ],
+                auth: $g.auth //logged user object
+            }, $g));
+            // place the dynamic container which replaces the route.
+            $g.appendDynamic();
+        }
+    });
+
+</script>
 
 </body>
 </html>

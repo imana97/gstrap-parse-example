@@ -1,4 +1,9 @@
-# parse-server-example
+# Gstrap note
+This example works with [gstrap](https://github.com/imana97/gstrap) framework.
+The npm package file was modified to install gstrap and it's dependencies with bower. For how to use,
+follow the original guideline.
+
+# Gstrap example with parse server
 
 Example project using the [parse-server](https://github.com/ParsePlatform/parse-server) module on Express.
 

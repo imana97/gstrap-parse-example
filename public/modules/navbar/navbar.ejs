@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span>
+            <span class="icon-bar"></span><span class="icon-bar"></span>
+        </button>
+        <a href="#" class="navbar-brand"><%- appName %></a>
+        <img id="main-preloader" src="public/assets/Preloader_8.gif" class="img-circle"
+             style="margin-top: 9px;" alt="Image">
+    </div>
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+
+            <% for(var i = 0; i < navigation.length; i++){ %>
+            <li>
+                <% if (navigation[i].access.indexOf(auth.access) != -1) { %>
+                <% if (navigation[i].link) { %>
+                <a href="<%= navigation[i].link %>"><%= navigation[i].name %></a>
+                <% } else { %>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= navigation[i].name %>
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <% for (var j = 0;j < navigation[i].links.length;j++){ %>
+                    <% if (navigation[i].links[j].access.indexOf(auth.access) != -1){ %>
+                    <li>
+                        <a href="<%= navigation[i].links[j].link %>"><%= navigation[i].links[j].name %></a>
+                    </li>
+                    <% } %>
+                    <% } %>
+                </ul>
+            </li>
+            <% } } } %>
+        </ul>
+        <% if (!auth.user){ %>
+        <form class="navbar-form navbar-right" style="padding-top: 5px;">
+            <div class="form-group">
+                <input id="input-username" type="text" class="form-control input-sm" placeholder="username">
+                <input id="input-password" type="password" class="form-control input-sm" placeholder="Password">
+            </div>
+            <button id="btn-login" type="button" class="btn btn-default btn-sm">Login</button>
+            <button id="btn-signup" type="button" class="btn btn-primary btn-sm">Sign Up</button>
+        </form>
+        <% } else { %>
+
+        <form class="navbar-form navbar-right">
+            <div class="btn-group">
+                <a class="btn dropdown-toggle btn-default" data-toggle="dropdown"
+                   href="#"><%= auth.user.get('username') %>
+                    <span class="caret"></span> </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#!/logout/">Logout!</a>
+                    </li>
+                </ul>
+            </div>
+        </form>
+        <% } %>
+    </div>
+</div>
