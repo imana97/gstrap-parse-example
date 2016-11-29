@@ -1,0 +1,37 @@
+{
+  "name": "gstrap",
+  "main": "gstrap.js",
+  "homepage": "https://github.com/imana97/gstrap",
+  "authors": [
+    "Iman Khaghani Far <iman.khaghani@gmail.com>"
+  ],
+  "description": "Modular and minimal JavaScript framework",
+  "keywords": [
+    "javascript",
+    "framework",
+    "minimal"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "mustache.js": "mustache#^2.3.0",
+    "bootstrap": "^3.3.7"
+  },
+  "_release": "0dcf56c02f",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "0dcf56c02fcf23fb33a463ced6f0b50227337197"
+  },
+  "_source": "https://github.com/imana97/Gstrap.git",
+  "_target": "*",
+  "_originalSource": "gstrap",
+  "_direct": true
+}
