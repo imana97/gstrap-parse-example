@@ -26,7 +26,7 @@
     </script>
 
     <!-- include gstrap framework -->
-    <script type="text/javascript" src="public/bower_components/gstrap/gstrap.min.js"></script>
+    <script type="text/javascript" src="public/bower_components/gstrap/gstrap.js"></script>
 
 </head>
 
@@ -57,6 +57,11 @@
                 "name": "signup",
                 "type": "module",
                 "path": "public/modules/signup/signup.js"
+            },
+            {
+                "name":"admin",
+                "type":"module",
+                "path":"public/modules/admin/admin.js"
             },
             {
                 "name": "todo",
@@ -122,6 +127,11 @@
                     {
                         name: "Todo",
                         link: "#!/todo/",
+                        access: ['USER'] // only allow users to see this menu item.
+                    },
+                    {
+                        name: "Admin",
+                        link: "#!/admin/",
                         access: ['USER'] // only allow users to see this menu item.
                     }
                 ],
