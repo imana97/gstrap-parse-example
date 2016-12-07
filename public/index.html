@@ -35,7 +35,7 @@
 
 <script type="text/javascript">
 
-    new Gstrap.App({
+    new Gstrap({
         compile: false, // under construction, set it to false.
         name: "Gstrap Demo",
         version: 0.01,
@@ -131,8 +131,19 @@
                     },
                     {
                         name: "Admin",
-                        link: "#!/admin/",
-                        access: ['USER'] // only allow users to see this menu item.
+                      access:['USER'],
+                        links:[
+                          {
+                            name: "Roles",
+                            link: "#!/admin/roles/",
+                            access: ['USER'] // only allow users to see this menu item.
+                          },
+                          {
+                            name: "All Users",
+                            link: "#!/admin/users/",
+                            access: ['USER'] // only allow users to see this menu item.
+                          }
+                        ]
                     }
                 ],
                 auth: $g.auth //logged user object

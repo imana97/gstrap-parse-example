@@ -23,7 +23,8 @@
  */
 
 (function () {
-  return new Gstrap.Route()
+  var Router=Gstrap().Route;
+  return new Router()
     .on('', function (req, res) {
       res.render('public/modules/default/default.ejs');
     })

@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="page-header">
+            <h1>Access level Management</h1>
+        </div>
+    </div>
+
+    <div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+
+
+        <form class="form-inline" role="form">
+
+        	<div class="form-group">
+        		<label class="sr-only" for="">label</label>
+        		<input type="text" class="form-control" name="" id="txt-admin-new-role-name" placeholder="Add a new role">
+        	</div>
+
+        	<button type="button" id="btn-admin-add-role" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add</button>
+        </form>
+
+        <h3>Roles</h3>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Role</th>
+                <th>Users</th>
+                <th>Roles</th>
+            </tr>
+            </thead>
+            <tbody id="table-admin-roles">
+            {{#roles}}
+                <tr id="{{id}}">
+                    <td>{{attributes.name}}</td>
+                    <td><a href="#!/admin/roles/{{attributes.name}}/users/" class="btn btn-sm btn-link">View/edit</a></td>
+                    <td><a href="#!/admin/roles/{{attributes.name}}/roles/" class="btn btn-sm btn-link">View/edit</a></td>
+                </tr>
+            {{/roles}}
+            </tbody>
+        </table>
+    </div>
+</div>
