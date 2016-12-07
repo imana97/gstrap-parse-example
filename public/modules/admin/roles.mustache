@@ -10,12 +10,15 @@
 
         <form class="form-inline" role="form">
 
-        	<div class="form-group">
-        		<label class="sr-only" for="">label</label>
-        		<input type="text" class="form-control" name="" id="txt-admin-new-role-name" placeholder="Add a new role">
-        	</div>
+            <div class="form-group">
+                <label class="sr-only" for="">label</label>
+                <input type="text" class="form-control" name="" id="txt-admin-new-role-name"
+                       placeholder="Add a new role">
+            </div>
 
-        	<button type="button" id="btn-admin-add-role" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add</button>
+            <button type="button" id="btn-admin-add-role" class="btn btn-primary"><span
+                    class="glyphicon glyphicon-plus"></span> Add
+            </button>
         </form>
 
         <h3>Roles</h3>
@@ -31,8 +34,10 @@
             {{#roles}}
                 <tr id="{{id}}">
                     <td>{{attributes.name}}</td>
-                    <td><a href="#!/admin/roles/{{attributes.name}}/users/" class="btn btn-sm btn-link">View/edit</a></td>
-                    <td><a href="#!/admin/roles/{{attributes.name}}/roles/" class="btn btn-sm btn-link">View/edit</a></td>
+                    <td><a href="#!/admin/roles/{{attributes.name}}/users/" class="btn btn-sm btn-link">View/edit</a>
+                    </td>
+                    <td><a href="#!/admin/roles/{{attributes.name}}/roles/" class="btn btn-sm btn-link">View/edit</a>
+                    </td>
                 </tr>
             {{/roles}}
             </tbody>

@@ -29,7 +29,7 @@
   var query = new Parse.Query(Todo);
 
 
-  var Router=Gstrap().Route;
+  var Router = Gstrap().Route;
   return new Router('todo')
     .on('', function (req, res) {
 

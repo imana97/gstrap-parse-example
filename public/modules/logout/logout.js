@@ -4,7 +4,7 @@
  */
 
 (function () {
-  var Router=Gstrap().Route;
+  var Router = Gstrap().Route;
   return new Router('logout')
     .on('', function (req, res) {
       Parse.User.logOut().then(function () {

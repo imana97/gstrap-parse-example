@@ -1,6 +1,6 @@
 (function () {
 
-  var Router=Gstrap().Route;
+  var Router = Gstrap().Route;
   return new Router('signup')
     .on('', function (req, res) {
       res.render('public/modules/signup/signup.ejs', {}, function (view) {
